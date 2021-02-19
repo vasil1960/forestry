@@ -13,6 +13,16 @@
 
     <h1>Update Issue</h1>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="row">
         <div class="col-md-12">
             <div class="card mt-4">
@@ -27,14 +37,14 @@
                                 <h4>Title</h4>
                             </label>
                             <textarea class="form-control" id="title" name="title"
-                                rows="3">{{ $issue->issueTitle }}</textarea>
+                                rows="4">{{ $issue->issueTitle }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="summary">
                                 <h4>Summary</h4>
                             </label>
                             <textarea class="form-control" id="summary" name="summary"
-                                rows="15">{{ strip_tags($issue->issueSummary) }}</textarea>
+                                rows="20">{{ strip_tags($issue->issueSummary) }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="author">

@@ -86,7 +86,7 @@
 
                         </div>
 
-                        <a href="/issue-show/{{ $issue->issueID }}">Edit</a>
+                        <a href="/issue/{{ $issue->issueID }}/edit">Edit</a>
 
                     </div>
                 </div>

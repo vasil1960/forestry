@@ -11,6 +11,8 @@ class Issue extends Model
     protected $table = 'issue';
     protected $primaryKey = 'issueID';
 
+    public $timestamps = false;
+
     public function journal()
     {
         return $this->belongsTo(Journal::class, 'issueJournalID', 'journalID');

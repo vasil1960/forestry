@@ -47,8 +47,7 @@ class ArticleIssueController extends Controller
      */
     public function show($id)
     {
-        $issue = Issue::where('issueId', $id)->first();
-        return view('issue.show', compact('issue'));
+        //
     }
 
     /**
@@ -59,7 +58,8 @@ class ArticleIssueController extends Controller
      */
     public function edit($id)
     {
-        //
+        $issue = Issue::where('issueId', $id)->first();
+        return view('issue.edit', compact('issue'));
     }
 
     /**
@@ -72,7 +72,24 @@ class ArticleIssueController extends Controller
     public function update(Request $request, $id)
     {
         $issue = Issue::where('issueId', $id)->first();
-        dd($issue);
+
+        // dd($request->all());
+
+        $request->validate([
+            'title' => 'required',
+            'summary' => 'required',
+            'author' => 'required',
+            'from' => 'required',
+        ]);
+
+            $issue->issueTitle = $request->title;
+            $issue->issueSummary = $request->summary;
+            $issue->issueAutor = $request->author;
+            $issue->issueFrom = $request->from;
+
+            $issue->save();
+
+            return redirect(route('issue.update', $id));
     }
 
     /**
