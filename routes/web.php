@@ -42,3 +42,5 @@ Route::get('/contact-form', [ContactController::class, 'contactForm'])->name('co
 
 Route::get('/issue/{id}/edit', [ArticleIssueController::class, 'edit'])->name('issue.edit');
 Route::post('/issue/{id}/edit', [ArticleIssueController::class, 'update'])->name('issue.update');
+Route::get('/issue/{id}/show', [ArticleIssueController::class, 'show'])->name('issue.show');
+

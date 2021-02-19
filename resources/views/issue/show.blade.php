@@ -11,7 +11,7 @@
 
 @section('content')
 
-    <div class="row text-right">
+    {{-- <div class="row text-right">
         <div class="col-md-12">
             <form class="form-inline" method="get" action="{{ route('issue.search', $journal->journalID) }}">
                 @csrf
@@ -19,7 +19,7 @@
                 <button type="submit" class="btn btn-primary">Go</button>
             </form>
         </div>
-    </div>
+    </div> --}}
 
 
     {{-- <div class="input-group mb-3">
@@ -39,25 +39,25 @@
     {{-- </div> --}}
     {{-- </div> --}}
 
-    <div class="mt-5">
+    {{-- <div class="mt-5">
         {{ $issues->withQueryString()->links() }}
-    </div>
+    </div> --}}
 
 
     <div class="row mt-3">
         <div class="col-md-12">
 
-            @foreach ($issues as $issue)
+            {{-- @foreach ($issues as $issue) --}}
 
 
                 <div class="card mb-3">
 
                     <div class="card-header">
                         <h5 class="card-title text-uppercase">{!! $issue->issueTitle !!}</h5>
-                        <div class="text-right">
+                        {{-- <div class="text-right">
                             <small>{{ $journal->journalTitle }}, Vol. {{ $journal->journalVolume }}, No.
                                 {{ $journal->journalNr }}, Year {{ $journal->journalYear }}</small>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="card-body">
@@ -84,25 +84,26 @@
                                 <i class="bi-download" style="font-size: 1.5rem; color: rgb(5, 110, 92);"></i>
                             </a>
 
+                            <a href="/issue/{{ $issue->issueID }}/edit">Edit</a>
+
                         </div>
 
-
-                        <a href="/issue/{{ $issue->issueID }}/show">Show</a>
+                        {{-- <a href="/issue/{{ $issue->issueID }}/edit">Edit</a> --}}
 
                     </div>
                 </div>
-            @endforeach
+            {{-- @endforeach --}}
 
         </div>
 
         {{-- <div class="col-md-4">
 
-            <div class="card">
+             <div class="card">
                 <div class="card-header">
                     <div class="h5">CONTENT</div>
                 </div>
 
-                <div class="card-body">
+                 <div class="card-body">
                     @foreach ($contents as $content)
                         <a href="{{ url('issue', ['issueJournalID' => $content->journalID]) }}">
                             <h6> {{ $content->journalTitle }}, {{ $content->journalYear }}, Vol.
@@ -118,6 +119,6 @@
 
     </div>
 
-    {{ $issues->withQueryString()->links() }}
+    {{-- {{ $issues->withQueryString()->links() }} --}}
 
 @endsection

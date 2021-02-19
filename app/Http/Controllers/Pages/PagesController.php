@@ -31,8 +31,9 @@ class PagesController extends BaseController
     {
         $journal = Journal::find($id);
         $issues =  Journal::find($journal->journalID)->issue()->paginate(5);
+        // dd($issues);
         $contents =  Journal::where('JournalID', '>', '36')->orderBy('journalID', 'DESC')->get();
-
+        // dd($issues);
         return view('pages.issue', compact('journal', 'issues', 'contents'));
     }
 

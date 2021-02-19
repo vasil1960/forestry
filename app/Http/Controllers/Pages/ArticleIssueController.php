@@ -47,7 +47,9 @@ class ArticleIssueController extends Controller
      */
     public function show($id)
     {
-        //
+        $issue = Issue::find($id);
+        // dd($issue);
+        return view('issue.show', compact('issue'));
     }
 
     /**
@@ -73,10 +75,8 @@ class ArticleIssueController extends Controller
     {
         $issue = Issue::where('issueId', $id)->first();
 
-        // dd($request->all());
-
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|min:3',
             'summary' => 'required',
             'author' => 'required',
             'from' => 'required',
@@ -89,7 +89,7 @@ class ArticleIssueController extends Controller
 
             $issue->save();
 
-            return redirect(route('issue.update', $id));
+            return redirect()->route('pages.issue', $issue->issueJournalID);
     }
 
     /**
