@@ -32,6 +32,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('issue.update', $issue->issueID) }}">
                         @csrf
+                        @method('put')
                         <div class="form-group">
                             <label for="title">
                                 <h4>Title</h4>

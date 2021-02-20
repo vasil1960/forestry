@@ -89,7 +89,7 @@ class ArticleIssueController extends Controller
 
             $issue->save();
 
-            return redirect()->route('pages.issue', $issue->issueJournalID);
+            return redirect()->route('issue.show', $id);
     }
 
     /**
